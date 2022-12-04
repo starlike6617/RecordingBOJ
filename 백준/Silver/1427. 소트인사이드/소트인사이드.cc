@@ -14,10 +14,10 @@ int main()
 
     int arr[str.size()];
     for (int i = 0; i < str.size(); i++)
-        arr[i] = (int)str[i];
+        arr[i] = str[i] - '0';
 
     sort(arr, arr + str.size(), desc);
 
     for (int i = 0; i < str.size(); i++)
-        cout << arr[i] - 48;
+        cout << arr[i];
 }
