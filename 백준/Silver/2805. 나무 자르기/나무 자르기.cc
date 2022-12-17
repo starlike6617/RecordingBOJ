@@ -16,6 +16,9 @@ bool condition(int middle, vector<int> vec, int num)
 
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
     int n, m;
     cin >> n >> m;
 
