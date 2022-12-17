@@ -3,10 +3,10 @@
 #include <algorithm>
 using namespace std;
 
-bool condition(long long m, vector<long long> vec, int num)
+bool condition(long long m, vector<int> vec, int num)
 {
     long long total = 0;
-    for (long long i : vec)
+    for (int i : vec)
         total += i / m;
 
     if (total >= num)
@@ -19,8 +19,8 @@ int main()
     int k, n;
     cin >> k >> n;
 
-    long long max = 0;
-    vector<long long> v(k);
+    int max = 0;
+    vector<int> v(k);
     for (int i = 0; i < k; i++)
     {
         cin >> v[i];
@@ -28,8 +28,7 @@ int main()
             max = v[i];
     }
 
-    long long start = 1, end = max;
-    long long mid, res;
+    long long start = 1, end = max, mid, res;
     while (start <= end)
     {
         mid = (start + end) / 2;
