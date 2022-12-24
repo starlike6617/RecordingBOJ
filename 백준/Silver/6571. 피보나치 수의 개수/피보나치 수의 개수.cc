@@ -8,14 +8,14 @@ string bigAdd(string a, string b)
     long long sum = 0;
     string res;
 
-    while (!a.empty() || !b.empty() || sum)
+    while (a.size() || b.size() || sum)
     {
-        if (!a.empty())
+        if (a.size())
         {
             sum += a.back() - '0';
             a.pop_back();
         }
-        if (!b.empty())
+        if (b.size())
         {
             sum += b.back() - '0';
             b.pop_back();
