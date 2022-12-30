@@ -8,7 +8,6 @@ int main()
     cin >> str >> bomb;
 
     deque<char> d;
-    int cnt = 0;
     for (char ch : str)
     {
         d.push_back(ch);
