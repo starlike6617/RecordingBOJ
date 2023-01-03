@@ -24,7 +24,7 @@ int main()
             ans1 = arr[start];
             ans2 = arr[end];
 
-            if (sum == 0)
+            if (min == 0)
                 break;
         }
 
