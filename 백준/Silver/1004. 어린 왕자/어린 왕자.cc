@@ -24,7 +24,7 @@ int main()
             int x, y, r;
             cin >> x >> y >> r;
 
-            if (where(x1, y1, x, y, r) != where(x2, y2, x, y, r))
+            if (where(x1, y1, x, y, r) ^ where(x2, y2, x, y, r))
                 cnt++;
         }
 
