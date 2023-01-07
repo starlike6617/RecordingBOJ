@@ -1,120 +1,53 @@
-#include <stdio.h>
-
-bool isSyntaxRight(char str[], int cnt, bool _isCpp)
-{
-    if (_isCpp)
-    {
-        if (str[0] == 95 || str[cnt - 1] == 95)
-        {
-            return false;
-        }
-        for (int i = 0; i < cnt; ++i)
-        {
-            if (str[i] == 95 && str[i + 1] == 95)
-            {
-                return false;
-            }
-            if (str[i] == 95 || (str[i] <= 122 && str[i] >= 97))
-            {
-                continue;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-    else
-    {
-        if (str[0] <= 90 && str[0] >= 65)
-        {
-            return false;
-        }
-        for (int i = 0; i < cnt; ++i)
-        {
-            if ((str[i] <= 90 && str[i] >= 65) || (str[i] <= 122 && str[i] >= 97))
-            {
-                continue;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-int getLen(char str[])
-{
-    int cnt = 0;
-    while (str[++cnt])
-        ;
-    return cnt;
-}
-
-bool isCpp(char str[], int cnt)
-{
-    for (int i = 0; i < cnt; ++i)
-    {
-        if (str[i] == '_')
-        {
-            return true;
-        }
-    }
-    return false;
-}
-
-void cppToJava(char str[], int cnt)
-{
-    int i;
-    for (i = 0; i < cnt; ++i)
-    {
-        if (str[i] == '_')
-        {
-            printf("%c", str[i + 1] - 32);
-            ++i;
-        }
-        else
-        {
-            printf("%c", str[i]);
-        }
-    }
-}
-
-void javaToCpp(char str[], int cnt)
-{
-    for (int i = 0; i < cnt; ++i)
-    {
-        if (str[i] < 97)
-        {
-            printf("_");
-            printf("%c", str[i] + 32);
-        }
-        else
-        {
-            printf("%c", str[i]);
-        }
-    }
-}
+#include <iostream>
+#include <string>
+using namespace std;
 
 int main()
 {
-    char str[1000];
-    scanf("%s", str);
-    int cnt = getLen(str);
-    bool _isCpp = isCpp(str, cnt);
-    if (!isSyntaxRight(str, cnt, _isCpp))
+    ios::sync_with_stdio(false);
+    cin.tie(NULL), cout.tie(NULL);
+
+    string str, res;
+    cin >> str;
+
+    bool isCpp = false;
+    bool isJava = false;
+    bool isRight = true;
+
+    for (int i = 0; i < str.size(); i++)
     {
-        printf("Error!");
-        return 0;
+        if (isupper(str[i]))
+        {
+            isCpp = true;
+            res.push_back('_');
+            res.push_back(tolower(str[i]));
+        }
+        else if ((str[i]) == '_')
+        {
+            isJava = true;
+            if (i + 1 < str.size() && islower(str[i + 1]))
+                res.push_back(toupper(str[i + 1]));
+            else
+            {
+                isRight = false;
+                cout << "Error!";
+                break;
+            }
+            i++;
+        }
+        else
+        {
+            res.push_back(str[i]);
+        }
+
+        if ((isCpp && isJava) || isupper(str[0]) || str[0] == '_')
+        {
+            isRight = false;
+            cout << "Error!";
+            break;
+        }
     }
-    if (_isCpp)
-    {
-        cppToJava(str, cnt);
-    }
-    else
-    {
-        javaToCpp(str, cnt);
-    }
+
+    if (isRight)
+        cout << res;
 }
