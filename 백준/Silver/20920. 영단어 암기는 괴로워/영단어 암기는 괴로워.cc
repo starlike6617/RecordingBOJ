@@ -9,12 +9,12 @@ map<string, int> m;
 
 bool cmp(string a, string b)
 {
-    if (m[a] == m[b] && a.size() == b.size())
-        return a < b;
-    else if (m[a] == m[b])
+    if (m[a] != m[b])
+        return m[a] > m[b];
+    else if (a.size() != b.size())
         return a.size() > b.size();
     else
-        return m[a] > m[b];
+        return a < b;
 }
 
 int main()
