@@ -1,28 +1,20 @@
 #include <iostream>
 using namespace std;
 
-class Person
-{
-public:
-    int w;
-    int h;
-    int cnt = 0;
-};
-
 int main()
 {
-    int n;
-    cin >> n;
+    int N;
+    cin >> N;
 
-    Person p[n];
-    for (int i = 0; i < n; i++)
-        cin >> p[i].w >> p[i].h;
+    int x[N], y[N], cnt[N] = {};
+    for (int i = 0; i < N; i++)
+        cin >> x[i] >> y[i];
 
-    for (int i = 0; i < n; i++)
-        for (int k = 0; k < n; k++)
-            if (p[i].w < p[k].w && p[i].h < p[k].h)
-                p[i].cnt++;
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+            if (x[i] < x[j] && y[i] < y[j])
+                cnt[i]++;
 
-    for (int i = 0; i < n; i++)
-        cout << p[i].cnt + 1 << ' ';
+    for (int i = 0; i < N; i++)
+        cout << cnt[i] + 1 << ' ';
 }
