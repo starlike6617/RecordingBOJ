@@ -3,25 +3,22 @@ using namespace std;
 
 int main()
 {
-    int n, m;
-    cin >> n >> m;
+    int N, M;
+    cin >> N >> M;
 
-    int *arr = new int(n);
-    for (int i = 0; i < n; i++)
+    int arr[N];
+    for (int i = 0; i < N; i++)
         cin >> arr[i];
 
     int sum, res = 0;
-    for (int i = 0; i < n - 2; i++)
-    {
-        for (int j = i + 1; j < n - 1; j++)
-        {
-            for (int k = j + 1; k < n; k++)
+    for (int i = 0; i < N - 2; i++)
+        for (int j = i + 1; j < N - 1; j++)
+            for (int k = j + 1; k < N; k++)
             {
                 sum = arr[i] + arr[j] + arr[k];
-                if (sum <= m && sum > res)
+                if (sum <= M && sum > res)
                     res = sum;
             }
-        }
-    }
+
     cout << res;
 }
