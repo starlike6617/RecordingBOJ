@@ -20,8 +20,7 @@ int main()
 {
     cin >> A >> B;
 
-    count(4);
-    count(7);
+    count(0);
 
     cout << cnt;
 }
