@@ -7,12 +7,6 @@ int main()
     int N, B;
     cin >> N >> B;
 
-    if (N == 0)
-    {
-        cout << 0;
-        return 0;
-    }
-
     stack<int> s;
     while (N)
     {
