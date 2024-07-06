@@ -27,7 +27,7 @@ int main()
         }
         else
         {
-            long long k; // (r * k) % w == 0 (최솟값 k)
+            long long k;
             if (w % r == 0)
                 k = w / r;
             else
