@@ -11,14 +11,15 @@ int main()
 
     for (int i = 0; i < l; i++)
     {
-        k = str[i] - 'a' + 1;
+        k = 1;
         for (int j = 0; j < i; j++)
         {
             k *= 31;
             k %= m;
         }
-        sum = (sum + k) % m;
+        sum = ((str[i] - 'a' + 1) * k + sum) % m;
+        sum %= m;
     }
 
-    cout << sum;
+    cout << sum % m;
 }
