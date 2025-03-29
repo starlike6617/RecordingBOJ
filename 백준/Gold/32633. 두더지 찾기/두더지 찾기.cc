@@ -3,7 +3,7 @@
 #include <algorithm>
 #define endl '\n'
 using namespace std;
-using ll = unsigned long long;
+using ll = long long;
 
 ll gcd(ll a, ll b)
 {
@@ -14,10 +14,7 @@ ll gcd(ll a, ll b)
 
 ll lcm(ll a, ll b, ll L)
 {
-    ll g = gcd(a, b);
-    if (a / g > L / b)
-        return L + 1; // 오버플로우 방지를 위해 계산 도중 L보다 커지면 L+1을 반환
-    return (a / g) * b;
+    return (a / gcd(a, b)) * b;
 }
 
 int main()
