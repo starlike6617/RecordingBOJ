@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-#define endl '\n'
+#include <iostream>
 using namespace std;
 
 int main()
@@ -7,21 +6,23 @@ int main()
     int N;
     cin >> N;
 
-    int res = 0;
+    int cnt = 0;
     for (int i = 1; i <= N; i++)
     {
-        string s = to_string(i);
+        int num = i;
 
         int sum = 0;
-        for (int j = 0; j < s.size(); j++)
+        while (num)
         {
-            sum += s[j] - '0';
+            sum += num % 10;
+            num /= 10;
         }
 
         if (i % sum == 0)
         {
-            res++;
+            cnt++;
         }
     }
-    cout << res;
+
+    cout << cnt;
 }
