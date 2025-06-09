@@ -1,29 +1,36 @@
 #include <iostream>
-#include <vector>
-#include <algorithm>
+#include <map>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-  int n, m;
-  cin >> n >> m;
+    int N, M;
+    cin >> N >> M;
 
-  vector<string> arr(n);
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
-  sort(arr.begin(), arr.end());
-
-  string str;
-  vector<string> v;
-  for (int i = 0; i < m; i++)
+    map<string, int> m;
+    for (int i = 0; i < N + M; i++)
     {
-      cin >> str;
-      if (binary_search(arr.begin(), arr.end(), str))
-        v.push_back(str);
+        string s;
+        cin >> s;
+        m[s]++;
     }
 
-  sort(v.begin(), v.end());
-  cout << v.size() << '\n';
-  for (int i = 0; i < v.size(); i++)
-    cout << v[i] << '\n';
+    int cnt = 0;
+    for (auto p : m)
+    {
+        if (p.second == 2)
+        {
+            cnt++;
+        }
+    }
+    cout << cnt << endl;
+
+    for (auto p : m)
+    {
+        if (p.second == 2)
+        {
+            cout << p.first << endl;
+        }
+    }
 }
