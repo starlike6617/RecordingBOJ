@@ -1,12 +1,17 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    int a, b, c, d, t;
-    cin >> a >> b >> c >> d;
-    t = a + b + c + d;
+    int sum = 0;
+    for (int i = 0; i < 4; i++)
+    {
+        int n;
+        cin >> n;
+        sum += n;
+    }
 
-    cout << t / 60 << endl
-         << t % 60;
+    cout << sum / 60 << endl;
+    cout << sum % 60;
 }
