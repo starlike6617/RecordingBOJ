@@ -1,33 +1,33 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#define endl '\n'
 using namespace std;
-
-void swap(int& a, int& b)
-{
-	int temp = a;
-	a = b;
-	b = temp;
-}
-
-bool isRight(int x, int y, int z)
-{
-	if (x > y) swap(x, y);
-	if (y > z) swap(y, z);
-
-	if (x * x + y * y == z * z)
-		return true;
-	else
-		return false;
-}
 
 int main()
 {
-	int a, b, c;
-	while (1)
-	{
-		cin >> a >> b >> c;
-		if (a == 0 && b == 0 && c == 0)
-			return 0;
+    while (true)
+    {
+        vector<int> v(3);
+        for (int i = 0; i < 3; i++)
+        {
+            cin >> v[i];
+        }
 
-		cout << (isRight(a, b, c) ? "right" : "wrong") << endl;
-	}
+        if (v[0] == 0 && v[1] == 0 && v[2] == 0)
+        {
+            break;
+        }
+
+        sort(v.begin(), v.end());
+
+        if (v[0] * v[0] + v[1] * v[1] == v[2] * v[2])
+        {
+            cout << "right" << endl;
+        }
+        else
+        {
+            cout << "wrong" << endl;
+        }
+    }
 }
