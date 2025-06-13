@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main()
@@ -6,19 +7,27 @@ int main()
     int N, M;
     cin >> N >> M;
 
-    int arr[N];
+    vector<int> v(N);
     for (int i = 0; i < N; i++)
-        cin >> arr[i];
+    {
+        cin >> v[i];
+    }
 
-    int sum, res = 0;
-    for (int i = 0; i < N - 2; i++)
-        for (int j = i + 1; j < N - 1; j++)
+    int res = 0;
+    for (int i = 0; i < N; i++)
+    {
+        for (int j = i + 1; j < N; j++)
+        {
             for (int k = j + 1; k < N; k++)
             {
-                sum = arr[i] + arr[j] + arr[k];
-                if (sum <= M && sum > res)
+                int sum = v[i] + v[j] + v[k];
+                if (sum <= M && res < sum)
+                {
                     res = sum;
+                }
             }
+        }
+    }
 
     cout << res;
 }
