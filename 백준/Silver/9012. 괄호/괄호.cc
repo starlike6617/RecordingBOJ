@@ -1,35 +1,31 @@
 #include <iostream>
-#include <string>
+#include <stack>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-	int n;
-	cin >> n;
-	string str;
+    int T;
+    cin >> T;
 
-	for (int i = 0; i < n; i++)
-	{		
-		cin >> str;
-		int sum = 0;
+    while (T--)
+    {
+        string s;
+        cin >> s;
 
-		while (!str.empty())
-		{
-			if (str.back() == '(')
-				sum += 1;
-			else
-				sum -= 1;
+        stack<char> st;
+        for (char c : s)
+        {
+            if (st.empty() || c == '(')
+            {
+                st.push(c);
+            }
+            else if (c == ')' && st.top() == '(')
+            {
+                st.pop();
+            }
+        }
 
-			if (sum > 0)
-			{
-				cout << "NO" << endl;
-				break;
-			}
-
-			str.pop_back();
-		}
-		
-		if (sum <= 0)
-			cout << (sum == 0 ? "YES" : "NO") << endl;
-	}
+        cout << (st.empty() ? "YES" : "NO") << endl;
+    }
 }
