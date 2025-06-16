@@ -1,23 +1,31 @@
 #include <iostream>
-#include <algorithm>
+#include <map>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    int n, m, nv[100001], mv[100001];
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-    cin >> n;
-    for (int i = 0; i < n; i++)
-        scanf("%d", nv + i);
+    int N;
+    cin >> N;
 
-    cin >> m;
-    for (int i = 0; i < m; i++)
-        scanf("%d", mv + i);
-
-    sort(nv, nv + n);
-    for (int i = 0; i < m; i++)
+    map<int, int> m;
+    while (N--)
     {
-        printf((binary_search(nv, nv + n, mv[i]) ? "1" : "0"));
-        printf("\n");
+        int num;
+        cin >> num;
+        m[num]++;
+    }
+
+    int M;
+    cin >> M;
+
+    while (M--)
+    {
+        int num;
+        cin >> num;
+        cout << (m[num] ? 1 : 0) << endl;
     }
 }
