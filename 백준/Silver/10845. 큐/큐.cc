@@ -1,55 +1,52 @@
 #include <iostream>
 #include <queue>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-	int n;
-	cin >> n;
+    int N;
+    cin >> N;
 
-	queue<int> q;
-	string s;
+    queue<int> q;
+    while (N--)
+    {
+        string s;
+        cin >> s;
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> s;
-		if (s == "push")
-		{
-			int num;
-			cin >> num;
-			q.push(num);
-		}
-		else if (s == "pop")
-		{
-			if (!q.empty())
-			{
-				cout << q.front() << '\n';
-				q.pop();
-			}
-			else
-				cout << -1 << '\n';
-		}
-		else if (s == "size")
-		{
-			cout << q.size() << '\n';
-		}
-		else if (s == "empty")
-		{
-			cout << (!q.empty() ? 0 : 1) << '\n';
-		}
-		else if (s == "front")
-		{
-			if (!q.empty())
-				cout << q.front() << '\n';
-			else
-				cout << -1 << '\n';
-		}
-		else if (s == "back")
-		{
-			if (!q.empty())
-				cout << q.back() << '\n';
-			else
-				cout << -1 << '\n';
-		}
-	}
+        if (s == "push")
+        {
+            int X;
+            cin >> X;
+            q.push(X);
+        }
+        else if (s == "pop")
+        {
+            if (q.empty())
+            {
+                cout << -1 << endl;
+            }
+            else
+            {
+                cout << q.front() << endl;
+                q.pop();
+            }
+        }
+        else if (s == "size")
+        {
+            cout << q.size() << endl;
+        }
+        else if (s == "empty")
+        {
+            cout << q.empty() << endl;
+        }
+        else if (s == "front")
+        {
+            cout << (q.empty() ? -1 : q.front()) << endl;
+        }
+        else if (s == "back")
+        {
+            cout << (q.empty() ? -1 : q.back()) << endl;
+        }
+    }
 }
