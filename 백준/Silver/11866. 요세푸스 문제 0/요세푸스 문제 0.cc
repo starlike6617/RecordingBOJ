@@ -1,23 +1,37 @@
 #include <iostream>
-#include <vector>
+#include <queue>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    int n, k, sum;
-    cin >> n >> k;
+    int K, N;
+    cin >> K >> N;
 
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
-        v[i] = i + 1;
+    queue<int> q;
+    for (int i = 1; i <= K; i++)
+    {
+        q.push(i);
+    }
 
     cout << '<';
-    sum = k - 1;
-    while (v.size() != 1)
+
+    while (!q.empty())
     {
-        cout << v[sum] << ", ";
-        v.erase(v.begin() + sum); // size -= 1
-        sum = (sum + k - 1) % v.size();
+        for (int i = 0; i < N - 1; i++)
+        {
+            q.push(q.front());
+            q.pop();
+        }
+
+        cout << q.front();
+        if (q.size() > 1)
+        {
+            cout << ", ";
+        }
+
+        q.pop();
     }
-    cout << v.front() << '>';
+
+    cout << '>';
 }

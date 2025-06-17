@@ -1,4 +1,4 @@
-# [Silver V] 요세푸스 문제 0 - 11866 
+# [Silver IV] 요세푸스 문제 0 - 11866 
 
 [문제 링크](https://www.acmicpc.net/problem/11866) 
 
@@ -8,7 +8,11 @@
 
 ### 분류
 
-자료 구조(data_structures), 구현(implementation), 큐(queue)
+구현, 자료 구조, 큐
+
+### 제출 일자
+
+2025년 6월 17일 21:04:40
 
 ### 문제 설명
 
