@@ -1,49 +1,48 @@
 #include <iostream>
 #include <stack>
-#include <string>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-	int n;
-	cin >> n;
+    int N;
+    cin >> N;
 
-	stack<int> s;
-	string f;
+    stack<int> st;
+    while (N--)
+    {
+        string s;
+        cin >> s;
 
-	for (int i = 0; i < n; i++)
-	{
-		cin >> f;
-		if (f == "push")
-		{
-			int num;
-			cin >> num;
-			s.push(num);
-		}
-		else if (f == "pop")
-		{
-			if (!s.empty())
-			{
-				cout << s.top() << endl;
-				s.pop();
-			}
-			else
-				cout << "-1" << endl;
-		}
-		else if (f == "size")
-		{
-			cout << s.size() << endl;
-		}
-		else if (f == "empty")
-		{
-			cout << (s.empty() ? "1" : "0") << endl;
-		}
-		else if (f == "top")
-		{
-			if (!s.empty())
-				cout << s.top() << endl;
-			else
-				cout << "-1" << endl;
-		}
-	}
+        if (s == "push")
+        {
+            int X;
+            cin >> X;
+            st.push(X);
+        }
+        else if (s == "pop")
+        {
+            if (st.empty())
+            {
+                cout << -1 << endl;
+            }
+            else
+            {
+                cout << st.top() << endl;
+                st.pop();
+            }
+        }
+        else if (s == "size")
+        {
+            cout << st.size() << endl;
+        }
+        else if (s == "empty")
+        {
+            cout << st.empty() << endl;
+        }
+        else if (s == "top")
+        {
+            cout << (st.empty() ? -1 : st.top()) << endl;
+        }
+    }
 }
