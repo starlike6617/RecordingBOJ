@@ -1,32 +1,24 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
+#define endl '\n'
 using namespace std;
-
-struct Point {
-	int x;
-	int y;
-};
-
-bool cmp(Point a, Point b)
-{
-	if (a.x == b.x)
-		return a.y < b.y;
-	else
-		return a.x < b.x;
-}
-
-Point arr[100000];
 
 int main()
 {
-	int n;
-	cin >> n;
+    int N;
+    cin >> N;
 
-	for (int i = 0; i < n; i++)
-		cin >> arr[i].x >> arr[i].y;
+    vector<pair<int, int>> v(N);
+    for (int i = 0; i < N; i++)
+    {
+        cin >> v[i].first >> v[i].second;
+    }
 
-	sort(arr, arr + n, cmp);
+    sort(v.begin(), v.end());
 
-	for (int i = 0; i < n; i++)
-		cout << arr[i].x << ' ' << arr[i].y << '\n';
+    for (auto p : v)
+    {
+        cout << p.first << ' ' << p.second << endl;
+    }
 }
