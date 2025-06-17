@@ -1,46 +1,52 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
     ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+    cin.tie(NULL);
 
-    int n, m, s = 0;
-    cin >> m;
-    string str;
+    int M;
+    cin >> M;
 
-    for (int i = 0; i < m; i++)
+    int S = 0;
+    while (M--)
     {
+        string str;
         cin >> str;
+
         if (str == "add")
         {
-            cin >> n;
-            s |= (1 << n);
+            int x;
+            cin >> x;
+            S |= (1 << x);
         }
         else if (str == "remove")
         {
-            cin >> n;
-            s &= ~(1 << n);
+            int x;
+            cin >> x;
+            S &= ~(1 << x);
         }
         else if (str == "check")
         {
-            cin >> n;
-            cout << (s & (1 << n) ? 1 : 0) << '\n';
+            int x;
+            cin >> x;
+            cout << ((S & (1 << x)) ? 1 : 0) << endl;
         }
         else if (str == "toggle")
         {
-            cin >> n;
-            s ^= (1 << n);
+            int x;
+            cin >> x;
+            S ^= (1 << x);
         }
         else if (str == "all")
         {
-            s = (1 << 21) - 1;
+            S = (1 << 21) - 1;
         }
         else if (str == "empty")
         {
-            s = 0;
+            S = 0;
         }
     }
 }
