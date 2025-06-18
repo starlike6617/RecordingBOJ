@@ -1,36 +1,31 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
 
-class Freq
-{
-public:
-    int zero;
-    int one;
-};
-
-void fibo(int a)
-{
-    Freq arr[41];
-    arr[0].zero = 1, arr[0].one = 0;
-    arr[1].zero = 0, arr[1].one = 1;
-
-    for (int i = 2; i <= a; i++)
-    {
-        arr[i].zero = arr[i - 1].zero + arr[i - 2].zero;
-        arr[i].one = arr[i - 1].one + arr[i - 2].one;
-    }
-
-    cout << arr[a].zero << ' ' << arr[a].one << endl;
-}
+int dp[41][2];
 
 int main()
 {
-    int t, n;
-    cin >> t;
+    dp[0][0] = 1;
+    dp[0][1] = 0;
+    dp[1][0] = 0;
+    dp[1][1] = 1;
 
-    while (t--)
+    for (int i = 2; i <= 40; i++)
     {
-        cin >> n;
-        fibo(n);
+        for (int j = 0; j <= 1; j++)
+        {
+            dp[i][j] = dp[i - 1][j] + dp[i - 2][j];
+        }
+    }
+
+    int T;
+    cin >> T;
+
+    while (T--)
+    {
+        int N;
+        cin >> N;
+        cout << dp[N][0] << ' ' << dp[N][1] << endl;
     }
 }
