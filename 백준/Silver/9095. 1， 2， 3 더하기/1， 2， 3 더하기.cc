@@ -1,23 +1,27 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
+
+int dp[11];
 
 int main()
 {
-    int t;
-    cin >> t;
+    dp[1] = 1; // 1
+    dp[2] = 2; // 1+1, 2
+    dp[3] = 4; // 1+1+1, 1+2, 2+1, 3
 
-    int dp[11];
-    dp[1] = 1;
-    dp[2] = 2;
-    dp[3] = 4;
-
-    for (int i = 4; i < 11; i++)
+    for (int i = 4; i <= 10; i++)
+    {
         dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3];
+    }
 
-    while (t--)
+    int T;
+    cin >> T;
+
+    while (T--)
     {
         int n;
         cin >> n;
-        cout << dp[n] << '\n';
+        cout << dp[n] << endl;
     }
 }
