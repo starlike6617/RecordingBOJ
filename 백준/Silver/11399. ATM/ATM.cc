@@ -5,16 +5,22 @@ using namespace std;
 
 int main()
 {
-  int n, sum =0;
-  cin >> n;
+    int N;
+    cin >> N;
 
-  vector<int> v(n);
-  for (int i = 0; i < n; i++)
-    cin >> v[i];
-  sort(v.begin(), v.end());
+    vector<int> v(N);
+    for (int i = 0; i < N; i++)
+    {
+        cin >> v[i];
+    }
 
-  for (int i = 0; i < n; i++)
-    sum += v[i] * (n - i);
+    sort(v.begin(), v.end());
 
-  cout << sum;
+    int res = 0;
+    for (int i = 0; i < N; i++)
+    {
+        res += v[i] * (N - i);
+    }
+
+    cout << res;
 }
