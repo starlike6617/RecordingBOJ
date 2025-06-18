@@ -1,25 +1,32 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#define endl '\n'
 using namespace std;
 
-int dp[1000001];
+vector<int> dp(1000001, 1000001);
 
 int main()
 {
-    int n;
-    cin >> n;
-
     dp[1] = 0;
     dp[2] = 1;
     dp[3] = 1;
 
-    for (int i = 4; i <= n; i++)
+    for (int i = 4; i <= 1000000; i++)
     {
-        dp[i] = dp[i - 1] + 1;
-        if (i % 2 == 0)
-            dp[i] = min(dp[i], dp[i / 2] + 1);
         if (i % 3 == 0)
+        {
             dp[i] = min(dp[i], dp[i / 3] + 1);
+        }
+        if (i % 2 == 0)
+        {
+            dp[i] = min(dp[i], dp[i / 2] + 1);
+        }
+        dp[i] = min(dp[i], dp[i - 1] + 1);
     }
 
-    cout << dp[n];
+    int N;
+    cin >> N;
+
+    cout << dp[N];
 }
