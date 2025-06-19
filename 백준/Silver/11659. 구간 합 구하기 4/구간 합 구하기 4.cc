@@ -1,22 +1,32 @@
 #include <iostream>
+#include <vector>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-  int n, m, a, b;
-  scanf("%d %d", &n, &m);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
 
-  int arr[n], sum[n];
-  for (int i = 0; i < n; i++)
-    scanf("%d", &arr[i]);
+    int N, M;
+    cin >> N >> M;
 
-  sum[0] = arr[0];
-  for (int i = 1; i < n; i++)
-    sum[i] = sum[i - 1] + arr[i];
-  
-  for (int i = 0; i < m; i++)
-  {
-    scanf("%d %d", &a, &b);
-    printf("%d\n", sum[b - 1] - sum[a - 2]);
-  }
+    vector<int> v(N + 1);
+    int sum = 0;
+
+    for (int i = 1; i <= N; i++)
+    {
+        int num;
+        cin >> num;
+
+        sum += num;
+        v[i] = sum;
+    }
+
+    while (M--)
+    {
+        int i, j;
+        cin >> i >> j;
+        cout << v[j] - v[i - 1] << endl;
+    }
 }
