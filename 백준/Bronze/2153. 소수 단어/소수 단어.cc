@@ -6,35 +6,28 @@ int main()
     string s;
     cin >> s;
 
-    int n = 0;
+    int sum = 0;
     for (char c : s)
     {
         if ('a' <= c && c <= 'z')
         {
-            n += c - 'a' + 1;
+            sum += c - 'a' + 1;
         }
-        else if ('A' <= c && c <= 'Z')
+        else
         {
-            n += c - 'A' + 27;
+            sum += c - 'A' + 27;
         }
     }
 
     bool isPrime = true;
-    for (int i = 2; i * i <= n; i++)
+    for (int i = 2; i < sum; i++)
     {
-        if (n % i == 0)
+        if (sum % i == 0)
         {
             isPrime = false;
             break;
         }
     }
 
-    if (isPrime)
-    {
-        cout << "It is a prime word.";
-    }
-    else
-    {
-        cout << "It is not a prime word.";
-    }
+    cout << (isPrime ? "It is a prime word." : "It is not a prime word.");
 }
