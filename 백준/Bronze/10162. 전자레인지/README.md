@@ -1,4 +1,4 @@
-# [Bronze IV] 전자레인지 - 10162 
+# [Bronze III] 전자레인지 - 10162 
 
 [문제 링크](https://www.acmicpc.net/problem/10162) 
 
@@ -8,7 +8,11 @@
 
 ### 분류
 
-그리디 알고리즘(greedy), 구현(implementation), 수학(math)
+수학, 구현, 그리디 알고리즘
+
+### 제출 일자
+
+2025년 6월 20일 15:43:43
 
 ### 문제 설명
 

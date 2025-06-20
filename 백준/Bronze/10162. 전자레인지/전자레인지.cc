@@ -1,4 +1,7 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#define endl '\n'
 using namespace std;
 
 int main()
@@ -6,28 +9,33 @@ int main()
     int T;
     cin >> T;
 
-    int a = 0, b = 0, c = 0;
+    int cnt[3] = {};
     while (T > 0)
     {
         if (T >= 300)
         {
-            a += 1;
-            T -= 300;
+            cnt[0] += T / 300;
+            T %= 300;
         }
         else if (T >= 60)
         {
-            b += 1;
-            T -= 60;
+            cnt[1] += T / 60;
+            T %= 60;
+        }
+        else if (T >= 10)
+        {
+            cnt[2] += T / 10;
+            T %= 10;
         }
         else
         {
-            c += 1;
-            T -= 10;
+            cout << -1;
+            return 0;
         }
     }
 
-    if (T == 0)
-        cout << a << ' ' << b << ' ' << c;
-    else
-        cout << -1;
+    for (int i : cnt)
+    {
+        cout << i << ' ';
+    }
 }
