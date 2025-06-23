@@ -1,35 +1,41 @@
 #include <iostream>
-#include <map>
-#include <string>
+#include <unordered_map>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, m;
-    cin >> n >> m;
+    int N, M;
+    cin >> N >> M;
 
-    map<string, int> pokedex1;
-    map<int, string> pokedex2;
-    for (int i = 0; i < n; i++)
+    unordered_map<string, int> m1;
+    unordered_map<int, string> m2;
+
+    for (int i = 1; i <= N; i++)
     {
-        string name;
-        cin >> name;
+        string s;
+        cin >> s;
 
-        pokedex1[name] = i + 1;
-        pokedex2[i + 1] = name;
+        m1[s] = i;
+        m2[i] = s;
     }
 
-    for (int i = 0; i < m; i++)
+    while (M--)
     {
-        string guess;
-        cin >> guess;
+        string s;
+        cin >> s;
 
-        if (isdigit(guess[0]))
-            cout << pokedex2[stoi(guess)] << '\n';
+        // 첫 문자가 숫자일 경우
+        if ((to_string(s[0] - '0') == s.substr(0, 1)))
+        {
+            cout << m2[stoi(s)] << endl;
+        }
         else
-            cout << pokedex1[guess] << '\n';
+        {
+            cout << m1[s] << endl;
+        }
     }
 }
