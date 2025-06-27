@@ -6,29 +6,22 @@ int main()
     int n, m;
     cin >> n >> m;
 
-    int res = m;
-    bool flag = false;
+    bool isMinus = false;
+    int maxM = m;
 
     while (n--)
     {
         int a, b;
         cin >> a >> b;
 
-        m += a - b;
-        res = max(res, m);
+        m = m + a - b;
+        maxM = max(maxM, m);
 
         if (m < 0)
         {
-            flag = true;
+            isMinus = true;
         }
     }
 
-    if (flag)
-    {
-        cout << 0;
-    }
-    else
-    {
-        cout << res;
-    }
+    cout << (isMinus ? 0 : maxM);
 }
