@@ -1,33 +1,29 @@
 #include <iostream>
+#include <vector>
+#define endl '\n'
 using namespace std;
-
-int arr[10001] = {};
-
-void d(int a)
-{
-    int b = a;
-    while (a)
-    {
-        b += a % 10;
-        a /= 10;
-    }
-    
-    if (b <= 10000 && arr[b] == 0)
-    {
-        arr[b] = 1;
-        d(b);
-    }
-}
 
 int main()
 {
-    for (int i = 1; i <= 10000; i++)
-    {
-        int n = i;
-        d(n);
-    }
+    vector<bool> v(10001, true);
 
     for (int i = 1; i <= 10000; i++)
-        if (arr[i] == 0)
+    {
+        int n = i, sum = i;
+        while (n > 0)
+        {
+            sum += n % 10;
+            n /= 10;
+        }
+
+        v[sum] = false;
+    }
+
+    for (int i = 1; i < 10001; i++)
+    {
+        if (v[i])
+        {
             cout << i << endl;
+        }
+    }
 }
