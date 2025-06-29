@@ -1,28 +1,28 @@
 #include <iostream>
-#include <map>
+#include <unordered_map>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n, m;
-    cin >> n >> m;
+    int N, M;
+    cin >> N >> M;
 
-    map<string, string> site;
-    string addr, pass;
-
-    for (int i = 0; i < n; i++)
+    unordered_map<string, string> m;
+    while (N--)
     {
-        cin >> addr >> pass;
-        site[addr] = pass;
+        string address, pw;
+        cin >> address >> pw;
+        m[address] = pw;
     }
 
-    for (int i = 0; i < m; i++)
+    while (M--)
     {
-        string str;
-        cin >> str;
-        cout << site[str] << '\n';
+        string s;
+        cin >> s;
+        cout << m[s] << endl;
     }
 }
