@@ -1,23 +1,27 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main()
 {
-  int n, k, cnt = 0;
-  cin >> n >> k;
+    int N, K;
+    cin >> N >> K;
 
-  int arr[n];
-  for (int i = 0; i < n; i++)
-    cin >> arr[i];
-
-  for (int i = n - 1; i >= 0; i--)
-  {
-    while (arr[i] <= k)
+    vector<int> A(N);
+    for (int i = 0; i < N; i++)
     {
-      k -= arr[i];
-      cnt++;
+        cin >> A[i];
     }
-  }
 
-  cout << cnt;
+    int cnt = 0;
+    for (int i = N - 1; i >= 0; i--)
+    {
+        if (A[i] <= K)
+        {
+            cnt += K / A[i];
+            K %= A[i];
+        }
+    }
+
+    cout << cnt;
 }
