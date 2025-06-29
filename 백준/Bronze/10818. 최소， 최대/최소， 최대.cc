@@ -1,29 +1,21 @@
-#include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#define endl '\n'
+using namespace std;
 
 int main()
 {
-    int arr[1000000], n, i, min, max;
-    scanf("%d", &n);
-    
-    for (i = 0; i < n; i++)
-        scanf("%d", &arr[i]);
-    
-    min = arr[0];
-    max = arr[0];
-    
-    for (i = 1; i < n; i++)
+    int N;
+    cin >> N;
+
+    vector<int> v(N);
+    for (int i = 0; i < N; i++)
     {
-        if (min > arr[i])
-            min = arr[i];
+        cin >> v[i];
     }
-    
-    for (i = 1; i < n; i++)
-    {
-        if (max < arr[i])
-            max = arr[i];
-    }
-    
-    printf("%d %d", min, max);
-    
-    return 0;
+
+    sort(v.begin(), v.end());
+
+    cout << v[0] << ' ' << v[N - 1];
 }
