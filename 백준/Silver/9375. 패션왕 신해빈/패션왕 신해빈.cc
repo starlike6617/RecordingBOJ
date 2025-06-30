@@ -1,11 +1,13 @@
 #include <iostream>
-#include <map>
-#include <algorithm>
+#include <unordered_map>
 #define endl '\n'
 using namespace std;
 
 int main()
 {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
     int T;
     cin >> T;
 
@@ -14,25 +16,18 @@ int main()
         int n;
         cin >> n;
 
-        if (n == 0)
+        unordered_map<string, int> m;
+        for (int i = 0; i < n; i++)
         {
-            cout << 0 << endl;
-            continue;
-        }
-
-        map<string, int> m;
-        while (n--)
-        {
-            string cloth, kind;
-            cin >> cloth >> kind;
-
+            string s, kind;
+            cin >> s >> kind;
             m[kind]++;
         }
 
-        long long res = 1;
+        int res = 1;
         for (auto it : m)
         {
-            res *= it.second + 1;
+            res *= (it.second + 1);
         }
 
         cout << res - 1 << endl;
