@@ -1,24 +1,26 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
-
-long long padovan(int a)
-{
-    long long arr[101];
-    arr[1] = 1, arr[2] = 1, arr[3] = 1;
-    for (int i = 4; i <= a; i++)
-        arr[i] = arr[i - 2] + arr[i - 3];
-    return arr[a];
-}
 
 int main()
 {
-    int t;
-    cin >> t;
+    long long dp[101] = {};
 
-    while (t--)
+    dp[1] = dp[2] = dp[3] = 1;
+    dp[4] = dp[5] = 2;
+
+    for (int i = 6; i <= 100; i++)
     {
-        int n;
-        cin >> n;
-        cout << padovan(n) << endl;
+        dp[i] = dp[i - 1] + dp[i - 5];
+    }
+
+    int T;
+    cin >> T;
+
+    while (T--)
+    {
+        int N;
+        cin >> N;
+        cout << dp[N] << endl;
     }
 }
