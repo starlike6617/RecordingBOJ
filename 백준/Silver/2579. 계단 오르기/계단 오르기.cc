@@ -1,21 +1,40 @@
 #include <iostream>
+#include <vector>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    int n;
-    cin >> n;
+    int N;
+    cin >> N;
 
-    int score[n + 1], ans[n + 1];
-    for (int i = 1; i <= n; i++)
-        cin >> score[i];
+    vector<int> v(N + 1);
+    for (int i = 1; i <= N; i++)
+    {
+        cin >> v[i];
+    }
 
-    ans[1] = score[1];
-    ans[2] = score[1] + score[2];
-    ans[3] = max(score[1], score[2]) + score[3];
+    int dp[301] = {};
 
-    for (int i = 4; i <= n; i++)
-        ans[i] = max(ans[i - 2], ans[i - 3] + score[i - 1]) + score[i];
+    if (N == 1)
+    {
+        cout << v[1];
+        return 0;
+    }
+    else if (N == 2)
+    {
+        cout << v[1] + v[2];
+        return 0;
+    }
 
-    cout << ans[n];
+    dp[1] = v[1];
+    dp[2] = v[1] + v[2];
+    dp[3] = max(v[1] + v[3], v[2] + v[3]);
+
+    for (int i = 4; i <= N; i++)
+    {
+        dp[i] = max(dp[i - 3] + v[i - 1] + v[i], dp[i - 2] + v[i]);
+    }
+
+    cout << dp[N];
 }
