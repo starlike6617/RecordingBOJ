@@ -1,39 +1,26 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
-
-int cnt;
-
-int func(int a)
-{
-  if (a < 10)
-    return a;
-  
-  int total = 0;
-  cnt++;
-  while (a)
-    {
-      total += a % 10;
-      a /= 10;
-    }
-  return func(total);
-}
 
 int main()
 {
-  string n;
-  cin >> n;
+    string X;
+    cin >> X;
 
-  if (n.size() > 1)
-    cnt++;
-
-  int sum = 0;
-  while (n.size())
+    int cnt = 0;
+    while (X.size() > 1)
     {
-      sum += n.back() - '0';
-      n.pop_back();
+        int Y = 0;
+        while (!X.empty())
+        {
+            Y += X.back() - '0';
+            X.pop_back();
+        }
+
+        X = to_string(Y);
+        cnt++;
     }
 
-  int res = func(sum);
-  cout << cnt << endl;
-  cout << (res % 3 == 0 ? "YES" : "NO");
+    cout << cnt << endl;
+    cout << (X == "0" || X == "3" || X == "6" || X == "9" ? "YES" : "NO");
 }
