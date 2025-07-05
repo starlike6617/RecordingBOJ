@@ -3,29 +3,47 @@ using namespace std;
 
 int main()
 {
-    string str;
-    cin >> str;
+    string s;
+    cin >> s;
 
-    int res = 0;
-    string temp;
-    bool plus = true;
+    int sum = 0;
+    bool isMinus = false;
+    string temp = "";
 
-    for (int i = 0; i < str.size(); i++)
+    for (char c : s)
     {
-        if (0 <= str[i] - '0' && str[i] - '0' <= 9)
-            temp += str[i];
-
-        if (str[i] == '-' || str[i] == '+' || i == str.size() - 1)
+        if ('0' <= c && c <= '9')
         {
-            if (plus)
-                res += stoi(temp);
-            else
-                res -= stoi(temp);
-            temp.clear();
+            temp += c;
         }
-        if (str[i] == '-')
-            plus = false;
+        else
+        {
+            if (isMinus)
+            {
+                sum -= stoi(temp);
+            }
+            else
+            {
+                sum += stoi(temp);
+            }
+
+            if (c == '-')
+            {
+                isMinus = true;
+            }
+
+            temp = "";
+        }
     }
 
-    cout << res;
+    if (isMinus)
+    {
+        sum -= stoi(temp);
+    }
+    else
+    {
+        sum += stoi(temp);
+    }
+
+    cout << sum;
 }
