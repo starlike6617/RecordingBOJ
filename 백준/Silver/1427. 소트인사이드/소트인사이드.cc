@@ -1,23 +1,24 @@
 #include <iostream>
+#include <vector>
 #include <algorithm>
+#define endl '\n'
 using namespace std;
-
-bool desc(int x, int y)
-{
-    return x > y;
-}
 
 int main()
 {
-    string str;
-    cin >> str;
+    string s;
+    cin >> s;
 
-    int arr[str.size()];
-    for (int i = 0; i < str.size(); i++)
-        arr[i] = str[i] - '0';
+    vector<char> v;
+    for (char c : s)
+    {
+        v.push_back(c);
+    }
 
-    sort(arr, arr + str.size(), desc);
+    sort(v.begin(), v.end(), greater<char>());
 
-    for (int i = 0; i < str.size(); i++)
-        cout << arr[i];
+    for (char c : v)
+    {
+        cout << c;
+    }
 }
