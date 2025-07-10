@@ -14,7 +14,7 @@ int main()
         v[i] %= 2;
     }
 
-    int evenCnt = 0, oddCnt = 0;
+    long long evenCnt = 0, oddCnt = 0;
     int evenLast = 0, oddLast = 0;
 
     for (int i = 0; i < N; i++)
