@@ -1,18 +1,19 @@
 #include <iostream>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    int t;
-    cin >> t;
+    int T;
+    cin >> T;
 
-    for (int i = 1; i <= t; i++)
+    for (int i = 1; i <= T; i++)
     {
         long long n, m;
         cin >> n >> m;
 
         cout << "Scenario #" << i << ":" << endl;
-        cout << (m - n + 1) * (m + n) / 2 << endl
-             << endl;
+        cout << (n + m) * (m - n + 1) / 2 << endl;
+        cout << endl;
     }
 }
