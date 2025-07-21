@@ -1,10 +1,13 @@
 #include <iostream>
-#include <set>
+#include <vector>
+#include <queue>
+#include <unordered_map>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
+    ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
     int T;
@@ -15,7 +18,10 @@ int main()
         int k;
         cin >> k;
 
-        multiset<int> ms;
+        priority_queue<int> pqMax;
+        priority_queue<int, vector<int>, greater<int>> pqMin;
+        unordered_map<int, int> cnt;
+
         while (k--)
         {
             char opr;
@@ -24,32 +30,54 @@ int main()
 
             if (opr == 'I')
             {
-                ms.insert(n);
+                pqMax.push(n);
+                pqMin.push(n);
+                cnt[n]++;
             }
-            else if (!ms.empty())
+            else if (n == 1)
             {
-                if (n == 1)
+                while (!pqMax.empty() && cnt[pqMax.top()] == 0)
                 {
-                    auto it = ms.end();
-                    it--;
-                    ms.erase(it);
+                    pqMax.pop();
                 }
-                else
+
+                if (!pqMax.empty() && cnt[pqMax.top()] > 0)
                 {
-                    ms.erase(ms.begin());
+                    cnt[pqMax.top()]--;
+                    pqMax.pop();
+                }
+            }
+            else
+            {
+                while (!pqMin.empty() && cnt[pqMin.top()] == 0)
+                {
+                    pqMin.pop();
+                }
+
+                if (!pqMin.empty() && cnt[pqMin.top()] > 0)
+                {
+                    cnt[pqMin.top()]--;
+                    pqMin.pop();
                 }
             }
         }
 
-        if (ms.empty())
+        while (!pqMax.empty() && cnt[pqMax.top()] == 0)
         {
-            cout << "EMPTY" << '\n';
+            pqMax.pop();
+        }
+        while (!pqMin.empty() && cnt[pqMin.top()] == 0)
+        {
+            pqMin.pop();
+        }
+
+        if (pqMax.empty())
+        {
+            cout << "EMPTY" << endl;
         }
         else
         {
-            auto it = ms.end();
-            it--;
-            cout << *it << ' ' << *ms.begin() << '\n';
+            cout << pqMax.top() << ' ' << pqMin.top() << endl;
         }
     }
 }
