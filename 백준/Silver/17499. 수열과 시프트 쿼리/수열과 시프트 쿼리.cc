@@ -1,42 +1,53 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    int N, Q;
+    cin >> N >> Q;
 
-    int n, q, start = 0;
-    cin >> n >> q;
-
-    int arr[n];
-    for (int i = 0; i < n; i++)
-        cin >> arr[i];
-
-    for (int i = 0; i < q; i++)
+    vector<int> v(N);
+    for (int i = 0; i < N; i++)
     {
-        int x, a, b;
-        cin >> x;
-
-        if (x == 1)
-        {
-            cin >> a >> b;
-            arr[(start + a - 1) % n] += b;
-        }
-        else if (x == 2)
-        {
-            cin >> a;
-            start = (start + n - a) % n;
-        }
-        else if (x == 3)
-        {
-            cin >> a;
-            start = (start + a) % n;
-        }
+        cin >> v[i];
     }
 
-    for (int i = start; i < start + n; i++)
-        cout << arr[i % n] << ' ';
+    int start = 0;
+    while (Q--)
+    {
+        int exp;
+        cin >> exp;
+
+        if (exp == 1)
+        {
+            int i, x;
+            cin >> i >> x;
+
+            v[(start + i - 1) % N] += x;
+        }
+        else if (exp == 2)
+        {
+            int s;
+            cin >> s;
+
+            start += N - s;
+        }
+        else
+        {
+            int s;
+            cin >> s;
+
+            start += s;
+        }
+
+        start %= N;
+    }
+
+    for (int i = 0; i < N; i++)
+    {
+        cout << v[(start + i) % N] << ' ';
+    }
 }
