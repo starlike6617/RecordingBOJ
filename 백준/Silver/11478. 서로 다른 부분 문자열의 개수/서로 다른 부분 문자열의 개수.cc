@@ -1,16 +1,23 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 #include <set>
+#define endl '\n'
 using namespace std;
 
 int main()
 {
-    string str;
-    cin >> str;
+    string S;
+    cin >> S;
 
-    set<string> s;
-    for (int i = 0; i < str.size(); i++)
-        for (int j = 1; j <= str.size() - i; j++)
-            s.insert(str.substr(i, j));
+    set<string> st;
+    for (int i = 0; i < S.size(); i++)
+    {
+        for (int j = 1; j <= S.size() - i; j++)
+        {
+            st.insert(S.substr(i, j));
+        }
+    }
 
-    cout << s.size();
+    cout << st.size();
 }
