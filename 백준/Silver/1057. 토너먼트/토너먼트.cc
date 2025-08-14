@@ -3,16 +3,16 @@ using namespace std;
 
 int main()
 {
-    int N, a, b;
-    cin >> N >> a >> b;
+    int N, A, B;
+    cin >> N >> A >> B;
 
-    int round = 0;
-    while (a != b)
+    int cnt = 0;
+    while (A != B)
     {
-        a = (a + 1) / 2;
-        b = (b + 1) / 2;
-        round++;
+        cnt++;
+        A = (A + 1) / 2;
+        B = (B + 1) / 2;
     }
 
-    cout << round;
+    cout << cnt;
 }
